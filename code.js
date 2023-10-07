@@ -90,7 +90,6 @@ let isModalActive = false;
 
 function updateProgressBar() {
   if (isTimeUp) return
-  console.log('updateProgressBar called', 'isTimeUp:', isTimeUp, 'isModalActive:', isModalActive);
   const now = new Date();
   const targetMillis = parseInt(localStorage.getItem("targetDate")) || 0;
   const targetDate = new Date(targetMillis);
