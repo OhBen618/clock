@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>working clock with milliseconds and progress bar</title>
+  <link rel="stylesheet" href="style.css">
+ <script src="code.js"></script>
+</head>
+<body onload="showModal()">
+
+<div id="timeModal" class="modal">
+  <div class="modal-content">
+    <label for="daysToAdd">days:</label>
+    <input type="number" id="daysToAdd" min="0">
+    <label for="targetHour">hr:</label>
+    <input type="number" id="targetHour" min="0" max="23">
+    <label for="targetMinute">min:</label>
+    <input type="number" id="targetMinute" min="0" max="59">
+    <label for="targetSecond">sec:</label>
+    <input type="number" id="targetSecond" min="0" max="59">
+    <button onclick="setTargetTime()">set</button>
+  </div>
+</div>
+
+<div id="timeUpModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <p>time is up!</p>
+    <button onclick="closeTimeUpModal()">ok</button>
+  </div>
+</div>
+
+
+
+
+  <div id="main-container">
+    <button id="changeTimeButton" class="change-time-button" onclick="showModal()">change time</button>
+    <div id="clock"></div>
+    <div id="clock24"></div>
+    <div id="date"></div>
+    <div id="time-left" class="time-left-text"></div>
+    <div id="targetTimeIndicator"></div> 
+    <div id="progress-container">
+      <div id="progress-bar">0%</div>
+    </div>
+  </div>
+
+</body>
+</html>
