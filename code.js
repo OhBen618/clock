@@ -16,6 +16,12 @@ function initializePage() {
   updateClock();
 }
 
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    document.getElementById("changeTimeButton").click();
+  }
+});
+
 window.addEventListener("DOMContentLoaded", function() {
    // Hide the timeUpModal by default
    document.getElementById("timeUpModal").style.display = "none";
