@@ -48,15 +48,28 @@ function closeTimeUpModal() {
 
 function setTargetTime() {
   const modal = document.getElementById("timeModal");
-  const daysToAdd = parseInt(document.getElementById("daysToAdd").value);
-  const targetHour = parseInt(document.getElementById("targetHour").value);
-  const targetMinute = parseInt(document.getElementById("targetMinute").value);
-  const targetSecond = parseInt(document.getElementById("targetSecond").value);
+  const daysToAdd = parseInt(document.getElementById("daysToAdd").value) || 0;
+  const targetHour = parseInt(document.getElementById("targetHour").value) || 0;
+  const targetMinute = parseInt(document.getElementById("targetMinute").value) || 0;
+  const targetSecond = parseInt(document.getElementById("targetSecond").value) || 0;
+
+  const addDays = parseInt(document.getElementById("addDays").value) || 0;
+  const addHours = parseInt(document.getElementById("addHours").value) || 0;
+  const addMinutes = parseInt(document.getElementById("addMinutes").value) || 0;
+  const addSeconds = parseInt(document.getElementById("addSeconds").value) || 0;
 
   const now = new Date();
   const targetDate = new Date(now);
-  targetDate.setDate(targetDate.getDate() + daysToAdd);
-  targetDate.setHours(targetHour, targetMinute, targetSecond);
+
+  if (addDays || addHours || addMinutes || addSeconds) {
+    targetDate.setDate(targetDate.getDate() + addDays);
+    targetDate.setHours(targetDate.getHours() + addHours);
+    targetDate.setMinutes(targetDate.getMinutes() + addMinutes);
+    targetDate.setSeconds(targetDate.getSeconds() + addSeconds);
+  } else {
+    targetDate.setDate(targetDate.getDate() + daysToAdd);
+    targetDate.setHours(targetHour, targetMinute, targetSecond);
+  }
 
   if (targetDate <= now) {
     alert("please enter a time in the future.");
@@ -64,11 +77,12 @@ function setTargetTime() {
   }
 
   localStorage.setItem("targetDate", targetDate.getTime());
-  isTimeUp = false;
   modal.style.display = "none";
-  updateProgressBar();
-  updateTargetTimeIndicator();
+  updateProgressBar(); 
+  updateTargetTimeIndicator(); 
 }
+
+
 
 function updateClock() {
   const now = new Date();
@@ -89,7 +103,11 @@ let isTimeUp = false;
 let isModalActive = false;
 
 function updateProgressBar() {
+  console.log("update progress bar has been triggered");
+  console.log("isTimeUp at start:", isTimeUp)
+  console.log("targetDate at start:", localStorage.getItem("targetDate"))
   if (isTimeUp) return
+  console.log('updateProgressBar called', 'isTimeUp:', isTimeUp, 'isModalActive:', isModalActive);
   const now = new Date();
   const targetMillis = parseInt(localStorage.getItem("targetDate")) || 0;
   const targetDate = new Date(targetMillis);
