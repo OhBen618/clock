@@ -74,7 +74,19 @@ color: white; /* for text color */
   border-radius: 15px 0 0 15px;
   font-weight: bold;
 }
-
+#credits {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px; /* adjust padding as needed */
+    background-color: #333; /* dark gray background */
+    color: #fff; /* white text */
+    text-align: center;
+    border-radius: 12px 12px 0 0; /* rounded corners on top */
+  }
+  
+  
 /* Modal styles */
 .modal {
     display: none;
@@ -108,6 +120,32 @@ color: white; /* for text color */
   .modal-content button {
     margin: 5px;
   }
+  
+  
+  .centered-or {
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+    position: relative;
+  }
+  
+  .centered-or:before,
+  .centered-or:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    border-bottom: 1px solid #888;
+  }
+  
+  .centered-or:before {
+    left: 0;
+  }
+  
+  .centered-or:after {
+    right: 0;
+  }
+  
   
   .modal-content label {
     width: 50px;
