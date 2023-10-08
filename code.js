@@ -1,5 +1,6 @@
 let isTimeUp = false;
 let isModalActive = false;
+let buttonShow = false;
 // initialization
 function initializePage() {
   // Hide the timeUpModal by default
@@ -8,6 +9,7 @@ function initializePage() {
   // Set the initial states
   isTimeUp = false;
   isModalActive = false;
+  buttonShow = true;
   
   // Initialize the progress bar and clock
   updateProgressBar();
@@ -37,6 +39,7 @@ let timerStopped = false;
 
 function showModal() {
   const modal = document.getElementById("timeModal");
+  buttonShow = true;
   modal.style.display = "block";
 }
 
@@ -47,6 +50,12 @@ function showTimerUpModal() {
 function closeTimeUpModal() {
   document.getElementById("timeUpModal").style.display = "none";
 }
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Enter" && buttonShow === true) {
+    document.getElementById("button").click();
+  }
+});
 
 function setTargetTime() {
   const modal = document.getElementById("timeModal");
@@ -82,6 +91,7 @@ function setTargetTime() {
 
   localStorage.setItem("targetDate", targetDate.getTime());
   modal.style.display = "none";
+  buttonShow = false;
   updateProgressBar(); 
   updateTargetTimeIndicator(); 
 }
