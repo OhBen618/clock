@@ -1,3 +1,5 @@
+let isTimeUp = false;
+let isModalActive = false;
 // initialization
 function initializePage() {
   // Hide the timeUpModal by default
@@ -62,11 +64,13 @@ function setTargetTime() {
   const targetDate = new Date(now);
 
   if (addDays || addHours || addMinutes || addSeconds) {
+    isTimeUp = false;
     targetDate.setDate(targetDate.getDate() + addDays);
     targetDate.setHours(targetDate.getHours() + addHours);
     targetDate.setMinutes(targetDate.getMinutes() + addMinutes);
     targetDate.setSeconds(targetDate.getSeconds() + addSeconds);
   } else {
+    isTimeUp = false;
     targetDate.setDate(targetDate.getDate() + daysToAdd);
     targetDate.setHours(targetHour, targetMinute, targetSecond);
   }
@@ -99,8 +103,7 @@ function updateClock() {
 }
 
 
-let isTimeUp = false;
-let isModalActive = false;
+
 
 function updateProgressBar() {
   console.log("update progress bar has been triggered");
