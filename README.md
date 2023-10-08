@@ -10,4 +10,4 @@ a simple countdown timer that will count to the set date and time. made using ch
 
 ## how to use
 
-go to "ohben618.github.io/clock/" to experience the whatever
+go to [the website](https://ohben618.github.io/clock/) to experience the whatever
